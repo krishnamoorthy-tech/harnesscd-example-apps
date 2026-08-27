@@ -45,3 +45,14 @@ output "environment" {
   value       = var.environment
   description = "Environment name"
 }
+
+# Dynamic infrastructure mapping outputs for Harness
+output "connector_ref" {
+  description = "Harness Kubernetes connector identifier for deployment"
+  value       = "account.k8sconnector"  # Replace with your actual connector ID
+}
+
+output "namespace" {
+  description = "Kubernetes namespace for deployment"
+  value       = "terragrunt-test"  # Replace with your target namespace
+}
