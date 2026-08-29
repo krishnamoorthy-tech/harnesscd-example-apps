@@ -9,13 +9,13 @@ variable "kubernetes_host" {
 }
 
 variable "kubernetes_token" {
-  description = "Kubernetes service account token for authentication"
+  description = "Kubernetes service account token for authentication (can be file path or raw token)"
   type        = string
   sensitive   = true
 }
 
 variable "kubernetes_cluster_ca_certificate" {
-  description = "Base64-encoded CA certificate for the Kubernetes cluster"
+  description = "CA certificate for the Kubernetes cluster (can be file path, base64-encoded, or raw PEM)"
   type        = string
   sensitive   = true
 }

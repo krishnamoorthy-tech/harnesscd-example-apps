@@ -20,10 +20,11 @@ terraform {
 
 # Kubernetes provider configuration
 # Authentication credentials are passed as workspace variables in Terraform Cloud
+# When using TFC agents running in-cluster, the token and CA cert are read from files
 provider "kubernetes" {
   host                   = var.kubernetes_host
   token                  = var.kubernetes_token
-  cluster_ca_certificate = base64decode(var.kubernetes_cluster_ca_certificate)
+  cluster_ca_certificate = var.kubernetes_cluster_ca_certificate
 }
 
 # Create Kubernetes namespace with labels and annotations
