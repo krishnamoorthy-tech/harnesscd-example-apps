@@ -9,19 +9,6 @@ terraform {
   }
 }
 
-# Variables
-variable "namespace_name" {
-  description = "Name of the Kubernetes namespace to create"
-  type        = string
-  default     = "harness-demo"
-}
-
-variable "environment_type" {
-  description = "Environment type (dev/qa/prod)"
-  type        = string
-  default     = "dev"
-}
-
 # Kubernetes provider - uses delegate's kubeconfig
 provider "kubernetes" {
   # Harness delegate provides cluster access
