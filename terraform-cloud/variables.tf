@@ -1,24 +1,7 @@
-# Terraform Cloud Variables for Kubernetes Authentication
+# Terraform Cloud Variables
 # These variables should be configured as workspace variables in Terraform Cloud
-# Sensitive variables (token, CA cert) should be marked as "Sensitive" in the workspace
-
-# Kubernetes cluster authentication
-variable "kubernetes_host" {
-  description = "Kubernetes API server URL (e.g., https://your-cluster.example.com:6443)"
-  type        = string
-}
-
-variable "kubernetes_token" {
-  description = "Kubernetes service account token for authentication (can be file path or raw token)"
-  type        = string
-  sensitive   = true
-}
-
-variable "kubernetes_cluster_ca_certificate" {
-  description = "CA certificate for the Kubernetes cluster (can be file path, base64-encoded, or raw PEM)"
-  type        = string
-  sensitive   = true
-}
+# When using TFC agents running in-cluster, Kubernetes authentication is automatic
+# via the agent pod's service account - no authentication variables needed.
 
 # Namespace configuration
 variable "namespace_name" {

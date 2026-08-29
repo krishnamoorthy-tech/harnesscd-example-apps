@@ -19,12 +19,12 @@ terraform {
 }
 
 # Kubernetes provider configuration
-# Authentication credentials are passed as workspace variables in Terraform Cloud
-# When using TFC agents running in-cluster, the token and CA cert are read from files
+# When using TFC agents running in-cluster, authentication is automatic via service account
+# The agent pod has access to the Kubernetes API using mounted service account credentials
 provider "kubernetes" {
-  host                   = var.kubernetes_host
-  token                  = var.kubernetes_token
-  cluster_ca_certificate = var.kubernetes_cluster_ca_certificate
+  host                   = "https://kubernetes.default.svc.cluster.local"
+  token                  = file("/var/run/secrets/kubernetes.io/serviceaccount/token")
+  cluster_ca_certificate = file("/var/run/secrets/kubernetes.io/serviceaccount/ca.crt")
 }
 
 # Create Kubernetes namespace with labels and annotations
